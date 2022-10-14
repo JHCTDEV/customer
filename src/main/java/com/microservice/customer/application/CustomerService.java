@@ -1,17 +1,17 @@
 package com.microservice.customer.application;
 
 import com.microservice.customer.domain.CustomerEntity;
-import com.microservice.customer.domain.customerService;
-import com.microservice.customer.domain.customerRepository;
+import com.microservice.customer.domain.ICustomerService;
+import com.microservice.customer.domain.ICustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @Service
-public class customerCrud implements customerService {
+public class CustomerService implements ICustomerService {
     @Autowired
-    private customerRepository customerRepository;
+    private ICustomerRepository customerRepository;
     @Override
     public Flux<CustomerEntity> findAll() {
         return this.customerRepository.findAll();

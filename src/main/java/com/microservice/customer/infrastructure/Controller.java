@@ -5,7 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
-import com.microservice.customer.domain.customerService;
+import com.microservice.customer.domain.ICustomerService;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
@@ -14,13 +14,17 @@ import reactor.core.publisher.Mono;
 public class Controller {
 
     @Autowired
-    private customerService customerService;
+    private ICustomerService customerService;
 
     @GetMapping(value = "list", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
     public Flux<CustomerEntity> findAll(){
         return this.customerService.findAll();
     }
+
     @GetMapping(value = "get/{id}")
+    Mono<CustomerEntity> findById(@PathVariable("id") String id){
+        return this.customerService.findById(id);
+    }
 
     @DeleteMapping("delete/{id}")
     public Mono<Void> delete(@PathVariable("id") String id){

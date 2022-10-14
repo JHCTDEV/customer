@@ -3,7 +3,7 @@ package com.microservice.customer.domain;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
-public interface customerService {
+public interface ICustomerService {
     Flux<CustomerEntity> findAll();
     Mono<CustomerEntity> save(CustomerEntity customer);
     Mono<Void> delete(String id);
