@@ -1,14 +1,12 @@
-package com.microservice.customer.domain;
+package com.microservice.customer.infrastructure.dto;
 
 import lombok.Data;
 import org.springframework.data.annotation.Id;
-import org.springframework.data.convert.ValueConverter;
-import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document(collection = "customer")
+import java.util.Date;
+
 @Data
-public class CustomerEntity {
-    @Id
+public class CustomerDto {
     private String id;
     private String documentNumber;
     private String documentType;
